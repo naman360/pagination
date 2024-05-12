@@ -2,8 +2,13 @@ import { useEffect, useState } from "react";
 import ProductCard from "./product-card";
 import Pagination from "./pagination";
 
+export type Product = {
+  id: string;
+  images: string[];
+  [key: string]: string | number | string[];
+};
 const ProductsListing = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
 
@@ -45,7 +50,9 @@ const ProductsListing = () => {
 
         {/* Backend driven approach */}
         {products.length > 0 &&
-          products.map((product) => <ProductCard product={product} />)}
+          products.map((product: Product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
       </div>
       <Pagination
         pageNumber={pageNumber}

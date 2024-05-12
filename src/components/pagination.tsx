@@ -30,6 +30,7 @@ const Pagination = ({
       </span>
       {[...Array(totalPages)].map((_, i) => (
         <span
+          key={`item-${i + 1}`}
           onClick={() => handlePageNumberChange(i + 1)}
           style={{
             padding: "20px",

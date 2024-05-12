@@ -1,8 +1,7 @@
+import { Product } from "./products-listing";
+
 type Props = {
-  product: {
-    images: string[];
-    [key: string]: string | number | string[];
-  };
+  product: Product;
 };
 
 const ProductCard = ({ product }: Props) => {
